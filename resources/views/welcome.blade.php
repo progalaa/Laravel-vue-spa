@@ -4,13 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>LaravelBnb</title>
 
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        
-        <script src="{{ asset('js/app.js') }}"></script>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body>
-        <div id="app"></div>
+        <div id="app">
+            <index></index>
+        </div>
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
