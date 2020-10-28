@@ -1,9 +1,23 @@
 <template>
     <div>
-        <bookable-list-item :title="bookable1.title" :content="bookable1.content" :price="bookable1.price"></bookable-list-item>
-        <bookable-list-item :title="bookable2.title" :content="bookable2.content" :price="bookable2.price"></bookable-list-item>
-        <bookable-list-item :title="bookable3.title" :content="bookable3.content" :price="bookable2.price"></bookable-list-item>
-    </div>
+        <div v-if="loading">Data is loading...</div>
+            <div v-else>
+                 <div class="row" v-for="row in rows" :key="'row' + row">
+                    <div
+                    class="col"
+                    v-for="(bookable, column) in bookablesInRow(row)" 
+                    :key="'row' + row + column"
+                    >
+                        <bookable-list-item 
+                        :title="bookable.title" 
+                        :content="bookable.content" 
+                        :price="bookable.price"
+                        ></bookable-list-item>
+                    </div>
+                   <div class="col" v-for="p in placeholdersInRow(row)" :key="'placeholder' + row + p"></div>
+                </div>    
+            </div>
+        </div>
 </template>
 
 
@@ -15,26 +29,66 @@ export default {
     },
     data() {
         return {
-            bookable1: {
-               title: "Cheap villa1",
-               content: "cheap villa 1 component",
-               price: 150,     
-            },
-            bookable2: {
-               title: "Cheap villa2",
-               content: "cheap villa 2 component",
-               price: 250,
-            },
-            bookable3: {
-               title: "Cheap villa2",
-               content: "cheap villa 2 component",
-               price: 500,
-            }
+             bookables: null,
+            loading: false,
+            columns: 3
+        }
+    },
+    computed: {
+        rows() {
+            return this.bookables == null ? 0 : Math.ceil(this.bookables.length / this.columns);
+        }
+    },
+    methods: {
+        bookablesInRow(row) {
+            return this.bookables.slice((row - 1) * this.columns, row * this.columns);
+        },
+        placeholdersInRow(row) {
+            return this.columns - this.bookablesInRow(row).length;
         }
     },
     created() {
-        console.log(this.bookable1);
-        console.log(this.bookable2);
+        this.loading = true;
+        setTimeout(() => {
+            this.bookables = [
+                {
+                    title: "Cheap villa1",
+                    content: "cheap villa 1 component",
+                    price: 150,     
+                },
+                {
+                    title: "Cheap villa2",
+                    content: "cheap villa 2 component",
+                    price: 250,  
+                },
+                {
+                    title: "Cheap villa2",
+                    content: "cheap villa 2 component",
+                    price: 500,
+                },
+                {
+                    title: "Cheap villa2",
+                    content: "cheap villa 2 component",
+                    price: 500,
+                },
+                {
+                    title: "Cheap villa2",
+                    content: "cheap villa 2 component",
+                    price: 500,
+                },
+                {
+                    title: "Cheap villa2",
+                    content: "cheap villa 2 component",
+                    price: 500,
+                },
+                {
+                    title: "Cheap villa2",
+                    content: "cheap villa 2 component",
+                    price: 500,
+                }
+            ];
+            this.loading = false;
+        }, 2000);
     },
 }
 </script>
