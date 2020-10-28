@@ -1946,30 +1946,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     BookableListItem: _BookableListItem__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  // beforeCreate() {
-  //     console.log("beforeCreate");
-  // },
+  data: function data() {
+    return {
+      bookable1: {
+        title: "Cheap villa1",
+        content: "cheap villa 1 component",
+        price: 150
+      },
+      bookable2: {
+        title: "Cheap villa2",
+        content: "cheap villa 2 component",
+        price: 250
+      },
+      bookable3: {
+        title: "Cheap villa2",
+        content: "cheap villa 2 component",
+        price: 500
+      }
+    };
+  },
   created: function created() {
-    console.log("created");
-  } // beforeMount() {
-  //     console.log("beforeMount");
-  // },
-  // mounted() {
-  //     console.log("mounted");
-  // },
-  // beforeDestroy() {
-  //     console.log("beforeDestroy");
-  // },
-  // destroyed() {
-  //     console.log("destroyed");
-  // }
-
+    console.log(this.bookable1);
+    console.log(this.bookable2);
+  }
 });
 
 /***/ }),
@@ -37650,25 +37654,25 @@ var render = function() {
     [
       _c("bookable-list-item", {
         attrs: {
-          title: "Cheap villa",
-          content: "A very cheap villa",
-          price: 1000
+          title: _vm.bookable1.title,
+          content: _vm.bookable1.content,
+          price: _vm.bookable1.price
         }
       }),
       _vm._v(" "),
       _c("bookable-list-item", {
         attrs: {
-          title: "Cheap villa 2",
-          content: "A very cheap villa 2",
-          price: 255
+          title: _vm.bookable2.title,
+          content: _vm.bookable2.content,
+          price: _vm.bookable2.price
         }
       }),
       _vm._v(" "),
       _c("bookable-list-item", {
         attrs: {
-          title: "Cheap villa 3",
-          content: "A very cheap villa 3",
-          price: 500
+          title: _vm.bookable3.title,
+          content: _vm.bookable3.content,
+          price: _vm.bookable2.price
         }
       })
     ],

@@ -1,9 +1,8 @@
 <template>
     <div>
-        <bookable-list-item title="Cheap villa" content="A very cheap villa" :price="1000"></bookable-list-item>
-        <bookable-list-item title="Cheap villa 2" content="A very cheap villa 2" :price="255"></bookable-list-item>
-        <bookable-list-item title="Cheap villa 3" content="A very cheap villa 3" :price="500"></bookable-list-item>
-
+        <bookable-list-item :title="bookable1.title" :content="bookable1.content" :price="bookable1.price"></bookable-list-item>
+        <bookable-list-item :title="bookable2.title" :content="bookable2.content" :price="bookable2.price"></bookable-list-item>
+        <bookable-list-item :title="bookable3.title" :content="bookable3.content" :price="bookable2.price"></bookable-list-item>
     </div>
 </template>
 
@@ -14,23 +13,28 @@ export default {
     components: {
         BookableListItem
     },
-    // beforeCreate() {
-    //     console.log("beforeCreate");
-    // },
-    created() {
-        console.log("created");
+    data() {
+        return {
+            bookable1: {
+               title: "Cheap villa1",
+               content: "cheap villa 1 component",
+               price: 150,     
+            },
+            bookable2: {
+               title: "Cheap villa2",
+               content: "cheap villa 2 component",
+               price: 250,
+            },
+            bookable3: {
+               title: "Cheap villa2",
+               content: "cheap villa 2 component",
+               price: 500,
+            }
+        }
     },
-    // beforeMount() {
-    //     console.log("beforeMount");
-    // },
-    // mounted() {
-    //     console.log("mounted");
-    // },
-    // beforeDestroy() {
-    //     console.log("beforeDestroy");
-    // },
-    // destroyed() {
-    //     console.log("destroyed");
-    // }
+    created() {
+        console.log(this.bookable1);
+        console.log(this.bookable2);
+    },
 }
 </script>
